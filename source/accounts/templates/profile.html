@@ -24,5 +24,17 @@
             Отсутсвует{% endif %}</p>
         <p><strong>Email:</strong>{% if user_object.email %}{{ user_object.email }}{% else %}Отсутствует{% endif %}</p>
     </div>
-    {% include 'review/reviews_list.html' %}
+    {% for review in user_object.reviews %}
+        <h2>djfnsjd</h2>
+            <div class="card m-3">
+                <div class="card-body">
+                    <h2><a style="text-decoration: none"
+                           href="{% url "accounts:user_profile" review.author.id %}">{{ review.author.username }}</a>
+                    </h2>
+                    <p>email: {% if review.author.email %}{{ review.author.email }}{% else %}Не указан {% endif %}</p>
+                    <h3>Отзыв:{{ review.review_text }}</h3>
+                    <h3>Оценка: {{ review.rate }}</h3>
+                </div>
+            </div>
+    {% endfor %}
 {% endblock %}

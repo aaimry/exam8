@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import reverse, get_object_or_404
+from django.shortcuts import reverse
 from django.views.generic import (
     ListView,
     DetailView,
@@ -8,8 +8,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from webapp.models import Product, Review
-from webapp.forms import ProductForm, ReviewForm, ModerForm
+from webapp.models import Product
+from webapp.forms import ProductForm
 
 
 class IndexProductView(ListView):

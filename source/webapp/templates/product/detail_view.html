@@ -32,5 +32,18 @@
         <a href="{% url 'webapp:review_create' product.pk %}" class="btn btn-primary fs-5">Добавить отзыв</a>
     </div>
     <h2>Отзывы на этот товар:</h2>
-    {% include 'review/reviews_list.html' %}
+    {% for review in product.review_product.all %}
+        {% if review.is_moderated == True %}
+            <div class="card m-3">
+                <div class="card-body">
+                    <h2><a style="text-decoration: none"
+                           href="{% url "accounts:user_profile" review.author.id %}">{{ review.author.username }}</a>
+                    </h2>
+                    <p>email: {% if review.author.email %}{{ review.author.email }}{% else %}Не указан {% endif %}</p>
+                    <h3>Отзыв:{{ review.review_text }}</h3>
+                    <h3>Оценка: {{ review.rate }}</h3>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}
