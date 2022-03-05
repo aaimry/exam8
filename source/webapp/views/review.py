@@ -34,16 +34,14 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
 
 class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.change_review'
-
-    def has_permission(self):
-        review = get_object_or_404(Review, id=self.kwargs.get('pk'))
-        return super().has_permission() or (self.request.user == review.author)
-
     form_class = ReviewForm
     model = Review
     template_name = 'review/review_update.html'
     context_object_name = 'product'
 
+    def has_permission(self):
+        review = get_object_or_404(Review, id=self.kwargs.get('pk'))
+        return super().has_permission() or (self.request.user == review.author)
     def get_form_class(self):
         if self.request.user.groups.filter(name='Moderator').exists():
             self.form_class = ModerForm
@@ -52,7 +50,7 @@ class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
     def form_valid(self, form):
         self.object = form.save()
         if not self.request.user.groups.filter(name='Moderators').exists():
-            self.object.is_moder = False
+            self.object.is_moderated = False
         return super().form_valid(form)
 
     def get_success_url(self):
