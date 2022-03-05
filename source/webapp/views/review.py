@@ -42,6 +42,7 @@ class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
     def has_permission(self):
         review = get_object_or_404(Review, id=self.kwargs.get('pk'))
         return super().has_permission() or (self.request.user == review.author)
+
     def get_form_class(self):
         if self.request.user.groups.filter(name='Moderator').exists():
             self.form_class = ModerForm
@@ -77,6 +78,6 @@ class ModerReview(PermissionRequiredMixin, ListView):
     context_object_name = 'reviews'
 
     def get_queryset(self):
-        queryset = Review.objects.filter(is_moderated=False).order_by('-update_date')
+        queryset = Review.objects.filter(is_moderated=False).order_by('-create_date')
         return queryset
 
