@@ -1,22 +1,29 @@
-<h1>Новые отзывы</h1>
-{% for review in reviews %}
-    <div class="card m-3">
-        <div class="card-body">
-            <a style="text-decoration: none"
-               href="{% url "accounts:user_profile" review.author.id %}">{{ review.author.username }}</a>
-            <h3><a class="fs-5" style="text-decoration: none" href="{% url 'webapp:product_detail' review.product.id %}">Товар: {{ review.product.title }}</a></h3>
-            <p>email: {% if review.author.email %}{{ review.author.email }}{% else %}Не указан {% endif %}</p>
-            <p>Отзыв:{{ review.review_text }}</p>
-            <p>Оценка: {{ review.rate }}</p>
-            <div class=" btn-group">
-                <a class="btn btn-primary text-light" style="text-decoration: none"
-                   href="{% url 'webapp:review_update' review.id %}">Редактировать отзыв</a>
-                <br>
-                {% if perms.webapp.delete_review %}
+{% if reviews %}
+    {% for review in product.review_product.all %}
+        <div class="card m-3">
+            <div class="card-body">
+                <a style="text-decoration: none"
+                   href="{% url "accounts:user_profile" review.author.id %}">{{ review.author.username }}</a>
+                <h3><a class="fs-5" style="text-decoration: none"
+                       href="{% url 'webapp:product_detail' review.product.id %}">Товар: {{ review.product.title }}</a>
+                </h3>
+                <p>email: {% if review.author.email %}{{ review.author.email }}{% else %}Не указан {% endif %}</p>
+                <p>Отзыв:{{ review.review_text }}</p>
+                <p>Оценка: {{ review.rate }}</p>
+                {% if perms.webapp.can_moderate_reviews or review.author == request.user %}
+                    <div class=" btn-group">
+                    <a class="btn btn-primary text-light" style="text-decoration: none"
+                       href="{% url 'webapp:review_update' review.id %}">Редактировать отзыв</a>
+                    <br>
+                {% endif %}
+                {% if perms.webapp.delete_review or review.author == request.user %}
                     <a class="btn btn-danger text-light" style="text-decoration: none"
                        href="{% url 'webapp:review_delete' review.id %}">Удалить отзыв</a>
                 {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <h2>Отзывов пока нет</h2>
+{% endif %}
