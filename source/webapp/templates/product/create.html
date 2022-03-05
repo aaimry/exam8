@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Create product{% endblock title %}
+
+{% block content %}
+    <form method="post"  enctype='multipart/form-data'>
+        {% include "partial/form.html" with button_text="Создать продукт" %}
+    </form>
+{% endblock content %}

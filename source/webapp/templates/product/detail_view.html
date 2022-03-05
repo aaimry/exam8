@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Товар{% endblock title %}
+{% block nav %}
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{% url "webapp:product_update" product.id %}">Редактировать товар</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link text-light" href="{% url "webapp:product_delete" product.id %}">Удалить товар</a>
+  </li>
+{% endblock nav %}
+{% block content %}
+    <div class="container mb-5 text-start" style="color: #020142">
+        <br>
+        {% if product.picture %}
+            <img class="cart-img-top" style="height: 400px; width: 400px" src="{{ product.photo.url }}" alt="user avatar">
+        {% else %}
+            <img src="{%  static 'img/img1.jpg' %}" alt=" no photo">
+        {% endif %}
+        <h2>Товар : {{ product.title }} </h2>
+        <h2>Категория: {{ product.category }} </h2>
+        {% if product.description %}
+            <h2>Описание: {{ product.description }} </h2>
+        {% else %}
+            <h2>Описание отсвутствует</h2>
+        {% endif %}
+        <a href="{% url 'webapp:review_create' product.pk %}" class="btn btn-primary">Добавить отзыв</a>
+        </div>
+{#    {% include 'review/product_review_list.html' %}#}
+
+{% endblock content %}

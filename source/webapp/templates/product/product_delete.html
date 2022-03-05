@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Delete {{ product.title }}{% endblock title %}
+{% block content%}
+    <div class="container text-center">
+        <h3 class="mt-4 mb-4">Вы действительно хотите удалить {{ product.title }}?</h3>
+        <form action="{% url 'webapp:product_delete' product.id%}" method="post">
+            {% csrf_token %}
+            <a href="{% url 'webapp:product_detail' product.id %}" class="btn btn-outline-info">Нет</a>
+            <input type="submit" name="action" value="Да" class="btn btn-outline-danger"/>
+        </form>
+    </div>
+{% endblock content %}

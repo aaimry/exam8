@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reviewer{% endblock title %}
+{% block content %}
+    <div class="container m-3 display-flex">
+        <div class="row ">
+            <div class="col">
+                {% for product in products %}
+                    <div class="col-xl-4 ">
+                        <div class="card w-75 mb-3">
+                            <img src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/img1.jpg' %}{% endif %}"
+                                 class="card-img-top" alt="pic-5">
+                            <h3>{{ product.title }}</h3>
+                            <h3>{{ product.category }}</h3>
+                            <div class="card-body text-center">
+                                <a href="{% url 'webapp:product_detail' product.id %}" class="btn btn-outline-primary">Детальный
+                                    просмотр</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
