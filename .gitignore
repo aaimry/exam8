@@ -5,3 +5,4 @@ __pycache__/
 .vscode/
 /source/db.sqlite3
 /source/uploads/
+uploads/
