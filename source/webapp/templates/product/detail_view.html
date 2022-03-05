@@ -3,30 +3,47 @@
 
 {% block title %}Товар{% endblock title %}
 {% block nav %}
-  <li class="nav-item">
-    <a class="nav-link text-light" href="{% url "webapp:product_update" product.id %}">Редактировать товар</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link text-light" href="{% url "webapp:product_delete" product.id %}">Удалить товар</a>
-  </li>
+    {% if perms.webapp.change_product and perms.webapp.delete_product %}
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url "webapp:product_update" product.id %}">Редактировать товар</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url "webapp:product_delete" product.id %}">Удалить товар</a>
+        </li>
+    {% endif %}
 {% endblock nav %}
 {% block content %}
     <div class="container mb-5 text-start" style="color: #020142">
         <br>
         {% if product.picture %}
-            <img class="cart-img-top" style="height: 400px; width: 400px" src="{{ product.photo.url }}" alt="user avatar">
+            <img class="cart-img-top" style="height: 400px; width: 400px" src="{{ product.picture.url }}"
+                 alt="user avatar">
         {% else %}
-            <img src="{%  static 'img/img1.jpg' %}" alt=" no photo">
+            <img src="{% static 'img/img1.jpg' %}" alt=" no photo">
         {% endif %}
         <h2>Товар : {{ product.title }} </h2>
-        <h2>Категория: {{ product.category }} </h2>
+        <h2>Рейтинг: {{ product.get_rate }}</h2>
+        <h2>Категория: {{ product.get_category_display }} </h2>
         {% if product.description %}
-            <h2>Описание: {{ product.description }} </h2>
+            <h4>Описание: {{ product.description }} </h4>
         {% else %}
-            <h2>Описание отсвутствует</h2>
+            <h4>Описание отсвутствует</h4>
         {% endif %}
-        <a href="{% url 'webapp:review_create' product.pk %}" class="btn btn-primary">Добавить отзыв</a>
-        </div>
-{#    {% include 'review/product_review_list.html' %}#}
-
+        <a href="{% url 'webapp:review_create' product.pk %}" class="btn btn-primary fs-5">Добавить отзыв</a>
+    </div>
+    <h2>Отзывы на этот товар:</h2>
+    {% for review in product.review_product.all %}
+        {% if review.is_moderated == True %}
+            <div class="card m-3">
+                <div class="card-body">
+                    <h2><a style="text-decoration: none"
+                           href="{% url "accounts:user_profile" review.author.id %}">{{ review.author.username }}</a>
+                    </h2>
+                    <p>email: {% if review.author.email %}{{ review.author.email }}{% else %}Не указан {% endif %}</p>
+                    <h3>Отзыв:{{ review.review_text }}</h3>
+                    <h3>Оценка: {{ review.rate }}</h3>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}

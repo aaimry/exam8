@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Review update{% endblock title %}
+{% block nav %}
+  <li class="nav-item">
+    <a class="nav-link text-light " href="{% url "webapp:review_delete" object.id %}">Удалить отзыв</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link text-light " href="{% url "webapp:product_detail" object.product.id %}">Вернуться к товару</a>
+  </li>
+{% endblock nav %}
+{% block content %}
+    <form  method="post">
+        {% include "partial/form.html" with button_text="Редактировать отзыв" %}
+    </form>
+{% endblock content %}

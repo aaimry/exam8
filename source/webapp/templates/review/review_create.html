@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Review{% endblock title %}
+
+<h2>Ваши впечатления о товаре {{ review.product.title }}</h2>
+{% block content %}
+    <form method="post"  enctype='multipart/form-data'>
+        {% include "partial/form.html" with button_text="Добавить отзыв" %}
+    </form>
+{% endblock content %}
