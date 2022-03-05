@@ -1,0 +1,208 @@
+[
+{
+    "model": "webapp.product",
+    "pk": 1,
+    "fields": {
+        "title": "Omega-3",
+        "category": "Meds",
+        "description": "",
+        "picture": "product_pics/omega.jpg"
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 2,
+    "fields": {
+        "title": "robot vacuum cleaner",
+        "category": "Home",
+        "description": "A robotic vacuum cleaner, sometimes called a robovac or a Roomba as a generic trademark, is an autonomous robotic vacuum cleaner which has a limited vacuum floor cleaning system combined with sensors and robotic drives with programmable controllers and cleaning routines.",
+        "picture": "product_pics/vacuum.jpg"
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 3,
+    "fields": {
+        "title": "Iphone 13 Pro Max",
+        "category": "Device",
+        "description": "1Tb, голубой,и возможно, наш последний",
+        "picture": "product_pics/iphone.jpg"
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 4,
+    "fields": {
+        "title": "Dyson Air brush",
+        "category": "Device",
+        "description": "",
+        "picture": "product_pics/dyson.jpg"
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 5,
+    "fields": {
+        "title": "Attractor School",
+        "category": "Education",
+        "description": "Attractor School - Бишкек. Научим программировать и трудоустроим большинство ... Совместный проект ресурсного центра «IT Attractor» и Александра Гудова.",
+        "picture": "product_pics/at.png"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 1,
+    "fields": {
+        "author": 1,
+        "product": 1,
+        "review_text": "this bud is great",
+        "rate": 5,
+        "is_moderated": true,
+        "create_date": "2022-03-05T07:35:57.788Z",
+        "update_date": "2022-03-05T07:35:57.788Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 3,
+    "fields": {
+        "author": 3,
+        "product": 1,
+        "review_text": "ну норм",
+        "rate": 4,
+        "is_moderated": true,
+        "create_date": "2022-03-05T08:31:15.009Z",
+        "update_date": "2022-03-05T08:31:15.009Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 4,
+    "fields": {
+        "author": 3,
+        "product": 1,
+        "review_text": "плохой товар,дизлайк",
+        "rate": 2,
+        "is_moderated": true,
+        "create_date": "2022-03-05T08:35:56.755Z",
+        "update_date": "2022-03-05T08:35:56.755Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 5,
+    "fields": {
+        "author": 3,
+        "product": 2,
+        "review_text": "Great product!",
+        "rate": 5,
+        "is_moderated": true,
+        "create_date": "2022-03-05T10:03:25.408Z",
+        "update_date": "2022-03-05T10:03:25.408Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 6,
+    "fields": {
+        "author": 1,
+        "product": 5,
+        "review_text": "Крутые курсы!",
+        "rate": 5,
+        "is_moderated": true,
+        "create_date": "2022-03-05T10:36:20.385Z",
+        "update_date": "2022-03-05T10:36:20.385Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 7,
+    "fields": {
+        "author": 3,
+        "product": 5,
+        "review_text": "я тут учусь!\r\n-молодец",
+        "rate": 5,
+        "is_moderated": true,
+        "create_date": "2022-03-05T10:36:57.284Z",
+        "update_date": "2022-03-05T10:36:57.284Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 8,
+    "fields": {
+        "author": 3,
+        "product": 3,
+        "review_text": "отличный телефон! 5",
+        "rate": 5,
+        "is_moderated": true,
+        "create_date": "2022-03-05T11:00:13.474Z",
+        "update_date": "2022-03-05T11:00:13.474Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 9,
+    "fields": {
+        "author": 3,
+        "product": 3,
+        "review_text": "сяоми лучше",
+        "rate": 1,
+        "is_moderated": true,
+        "create_date": "2022-03-05T11:00:33.765Z",
+        "update_date": "2022-03-05T11:00:33.765Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 10,
+    "fields": {
+        "author": 3,
+        "product": 3,
+        "review_text": "хорошая цветопередача",
+        "rate": 4,
+        "is_moderated": true,
+        "create_date": "2022-03-05T11:00:57.301Z",
+        "update_date": "2022-03-05T11:00:57.301Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 11,
+    "fields": {
+        "author": 3,
+        "product": 4,
+        "review_text": "good airbrush",
+        "rate": 5,
+        "is_moderated": false,
+        "create_date": "2022-03-05T11:36:13.365Z",
+        "update_date": "2022-03-05T11:36:13.365Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 12,
+    "fields": {
+        "author": 4,
+        "product": 3,
+        "review_text": "norm",
+        "rate": 5,
+        "is_moderated": false,
+        "create_date": "2022-03-05T11:43:31.616Z",
+        "update_date": "2022-03-05T11:43:31.616Z"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 13,
+    "fields": {
+        "author": 4,
+        "product": 4,
+        "review_text": "dorogo",
+        "rate": 3,
+        "is_moderated": false,
+        "create_date": "2022-03-05T11:44:44.241Z",
+        "update_date": "2022-03-05T11:44:44.241Z"
+    }
+}
+]

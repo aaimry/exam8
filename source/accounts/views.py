@@ -57,11 +57,9 @@ class UserProfileView(DetailView):
     template_name = 'profile.html'
     context_object_name = 'user_object'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     review = Review.objects.all()
-    #     context['review'] = review
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
