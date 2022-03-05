@@ -25,7 +25,10 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['review'] = self.object.review_product.all().exclude(is_moderated=False)
+        if self.request.user.has_perm('webapp.can_moderate_reviews'):
+            context['review'] = self.object.review_product.all()
+        else:
+            context['review'] = self.object.review_product.all().exclude(is_moderated=False)
         return context
 
 
